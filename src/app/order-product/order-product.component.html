@@ -1,0 +1,34 @@
+<div class="work-popup border-radius-custom modal-dialog">
+  <div class="modal-content">
+    <div class="modal-body text-center mt-1">
+      <input
+        type="number"
+        id="orderQuantity"
+        class="form-control"
+        name="orderQuantity"
+        min="1"
+        max="100"
+        [(ngModel)]="globalData.orderQuantity"
+        #orderQuantity="ngModel"
+        [ngClass]="{'is-invalid': orderQuantity.invalid && (orderQuantity.dirty || orderQuantity.touched)}"
+        required />
+      <label class="form-label" for="orderQuantity">Order Quantity</label>
+      <div *ngIf="orderQuantity.invalid && (orderQuantity.dirty || orderQuantity.touched)" class="invalid-feedback">
+      </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+      <div class="work-actions d-flex">
+        <button type="button" class="btn button-height btn-secondary" (click)="close()">Cancel</button>
+        <button
+          type="submit"
+          data-mdb-button-init
+          data-mdb-ripple-init
+          class="btn btn-primary btn-lg"
+          [disabled]="orderQuantity.invalid" (click)="confirm()">
+          Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
